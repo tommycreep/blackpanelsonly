@@ -1,0 +1,101 @@
+<!doctype HTML>
+<html lang='en'>
+<head>
+    <meta charset="utf-8"><meta name="Author" content="Tommy Creep"><meta name="description" content="How I sequence my eurorack live case"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Panels Only</title>
+    <link href="../styles/teststyle2.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Secular+One&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header><div class= "headerimage" >
+<div class="mainlogo"></div></div></header>
+
+  <nav>
+    <ul class="menu">
+    <li><a class="button" href="../index.html">Home</a></li>
+    <li><a class="button"  href="../about.html">About</a>  </li>
+    <li><a class="button" href="../issues.html">Issues</a></li>
+	<li><a class="button" href="../articles.html">Articles</a></li> 
+	<li><a class="button" href="https://tommycreep.bandcamp.com/" target="_blank">Shop</a></li>  
+	</ul>
+    </nav>
+	
+<main>
+
+	<article>
+<h2>How I Sequence My Live Case</h2>
+<p>24/05/2022</p>
+	<img src="../images/01seq.gif" alt="close up shot of my sequencing modules"><br>
+	<p>I’ve been through a few sequencers since I started with modular as there's so many out there and it took a while to figure out what my wants and needs were. </p>
+	<br>	
+	<p>At first I wanted to compose whole tracks with multiple parts and sections. I started with a <a href="https://www.arturia.com/products/hybrid-synths/beatstep-pro/overview" target="_blank">Beatstep Pro</a> which was good as you can save parts and chain them to an extent but you still have the flexibility to mix things up. I used this for a year or so and was still thinking in terms of sequencing full tracks and it got tedious shifting through patterns &amp; pages. </p>
+	<br>	
+	<p>I then upgraded to a <a href="https://xor-electronics.com/nerdseq/" target="_blank">Nerdseq</a>, because i’m used to trackers (<a href="https://www.littlesounddj.com/" target="_blank">LSDj</a> on Game Boy, <a href="https://www.renoise.com/">Renoise</a> on PC/Mac) and it’s perfect for making structures as complex as you want. You can loop and trigger individual patterns live so it does have improvisational capabilities too. I'd still highly recommend it if you like trackers and want to create intricate compositions and be able to easily save a whole set.</p>
+	<br>		
+		
+	<p>After maybe a year of that, I felt I was under-utilising the Nerdseq and I went in the opposite direction with the 5-step RYO <a href="https://www.modulargrid.net/e/ryo-penta" target="_blank">Penta</a>, then Serpens Modular <a href="https://www.serpensmodular.com/Ara-Sequential-Switch-Sequencer-Voltage-Source-Clock-Divider-p172730019" target="_blank">Ara</a> came out which is also a 5-step sequencer (among other things) and I’ve still got and use both. Neither are quantized, which I liked the freedom of, but on the odd occasion where I wanted something to sound in-tune, it's pretty hard to dial in particular notes.</p> 
+	<br>		
+	<p>By this stage, I worked out what features I really wanted- something small, with the ability to save a few melodies/basslines to give me the option of more "musical" parts when I feel like it. There's a few options out there for this like the 2HP <a href="https://www.twohp.com/modules/seq" target="_blank">Seq</a> and the Erica Synths <a href="https://www.ericasynths.lv/shop/eurorack-modules/by-series/pico-series/pico-seq/" target="_blank">Pico Seq</a> and most seem to have similar features. I went with the Noise Engineering one as it seemed compact but with a nice enough workflow. Along with a couple of other modules, this has evolved into a little sequencing section that I've been happy with for a while now as it gives a bit of flexibility but requires a bit of creativity and problem solving to get the most out of them which is half of the fun of modular for me.</p>
+<br>
+<h3>MODULES</h3>
+	<ul><li><a href="https://noiseengineering.us/products/horologic-solum-horologic-uter" target="_blank">Horologic Solum</a> - clock + divider</li>
+	<li><a href="https://noiseengineering.us/products/bin-seq" target="_blank">Bin Seq</a> - 8-step gate/trigger sequencer</li>
+		<li><a href="https://noiseengineering.us/products/vox-digitalis" target="_blank">Vox Digitalis</a> - 16-step pitch sequencer</li>
+	<li><a href="https://vpme.de/t43/" target="_blank">VPME T43</a> - precision adder</li>
+	<li>A couple of multiples for multing the clock, reset signal and gate/trigger signal.</li>
+</ul>
+		<br>
+<h3>HOW THEY'RE PATCHED</h3>
+This combination allows for 3 main variations:<ol>
+		<li><strong><span style="color: red"> Trigger sequencer</span> into <span style="color: mediumpurple">pitch sequencer</span>; <span style="color: lawngreen">clock</span> into <span style="color: orange">envelope</span>.</strong> </li>
+	<li><strong><span style="color: red">Trigger sequencer</span> into both <span style="color: mediumpurple">pitch sequencer</span> and <span style="color: orange">envelope</span>. </strong></li>
+	<li><strong><span style="color: red">Trigger sequencer</span> into <span style="color: orange">envelope</span>; <span style="color: lawngreen">clock</span> into <span style="color: mediumpurple">pitch sequencer</span>.</strong> </li></ol>
+
+<p> The different variations allow me to change whether the notes change in-time with or independently of the rhythm.</p>		
+						
+		<p><span style="color: lawngreen">Horologic Solum</span> sends <span style="color: red">Bin Seq</span> and <span style="color: mediumpurple">Vox Digitalis</span> a reset every 16 steps regardless of the variations mentioned above, to keep things at the same loop length even if I change the rhythm with <span style="color: red">Bin Seq</span>.</p>			
+
+<p>Switching between them is mostly just changing one or two cables, especially with mults nearby. See the video below for examples of each variation.</p>
+
+		<iframe class="video"  src="https://www.youtube.com/embed/rMmFZ1dirOE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>	
+
+	
+		
+<p>As the clock has a built-in divider, if the pitch sequencer is running at a <strong>slower</strong> clock division than the trigger sequencer or envelope, then I can have something more like a chord progression instead of a melody. You just have to remember to also set the reset signal to a slower division too.</p>
+
+
+		<p><strong><span style="color: lawngreen">Horologic Solum</span></strong> is great because you can hold reset then switch the clock to external to pause the sequence, then when you switch it back to internal, it’ll start again from the first step of the sequence. This is really handy when performing live as you can run a sequence for a while, pause it and have something else going on (drone, ambience, noise), while setting the next part up (like loading a different sequence, or changing the rhythm). </p>
+
+		<p>I've set the <strong><span style="color: mediumpurple">Vox Digitalis</span></strong> to only load new patterns once it reaches the end of its current sequence, so I can change it early and not have to press the load button at exactly the right moment.</p>
+
+		<p>The <strong>T43</strong> is a recent addition. I wanted a precision adder after watching this <a href="https://www.youtube.com/watch?v=mOjNvifdrxo&ab_channel=DreamsOfWires" target="_blank">awesome video using the AJH Synth one</a> and had 4HP spare. I can use it to transpose my sequencer or transpose drones if the sequencer isn’t running. It has switches to go up or down 2 octaves, 1 octave, 4 semitones, 2 semitones, 1 semitones, so depending on which switches you combine you can switch to any note up to 43 semitones up or down. </p>
+		
+		<p>I work out a sequence either in my head or on the Keystep before programming it in as I find I come up with better sequences this way. It holds up to 16 sequences which i’ve found to be more than enough, I’m not precious about them and just overwrite them if they don't still sound good after looping them repeatedly. The button combos on the <span style="color: mediumpurple">Vox Digitalis</span> are pretty straightforward and intuitive, especially for loading/saving sequences and I really like the little calculator-style display- it’s satisfying to watch without being distracting or feeling like you’re looking at a screen. It has a switch for changing the direction of the sequence between forward/random/ping pong which i’ve not really found a use for yet, I guess it’s more handy for techno or something where you want a bit more variation.</p>
+
+		
+
+<p>I've been using this set-up for a while now and am enjoying with the workflow. Having the trigger sequence separated from the pitch sequence adds flexibility, feels more hands on and allows for experimentation, finding creative ways around the limitations. </p>
+
+<h4>Honourable mentions:</h4><ul>
+<li><a href="https://noiseengineering.us/products/fractio-solum" target="_blank">Fractio Solum</a> - Really fun divider where you can basically dial in loads of different time signatures. It was part of the squad previously but I don’t really have enough things to trigger to make it useful in the live case. I’ve moved it into the Doepfer LC9 along with some drum percussion modules where I can get more out of it.</li> 
+<li><a href="https://www.arturia.com/keystep/overview" target="_blank">Keystep</a> - Simple, doesn't take up much room- I really like the boxy utilitarian shape. Haven't used it live at all, I mainly use it for working out sequences. Only annoying things about the Keystep are: you can have modulation by the touch strip, aftertouch or velocity but can't have them all at the same time AND you need to use the software to switch between them; also the tiny switches on the back for changing between internal and external clock are kinda annoying. Despite this though I think it's still pretty great (especially in black).</li> 		
+		</ul>
+
+<p>Hopefully the above is helpful or mildly interesting to someone out there! I'd love to hear about other peoples' experiences with sequencing- particularly outside of the big fully-featured sequencers.</p>	
+	<br>
+	<hr>	
+<p><a href="../articles.html">Return to Article List</a></p>
+	
+	
+	</article>
+	
+	
+	
+	
+	</main>
+	
+	
+	</body>

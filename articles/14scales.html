@@ -1,0 +1,177 @@
+<!doctype HTML>
+<html lang='en'>
+<head>
+    <meta charset="utf-8"><meta name="Author" content="Tommy Creep"><meta name="description" content="2022 Eurorack Year in Review"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Panels Only</title>
+    <link href="../styles/teststyle2.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Secular+One&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+
+<header><div class= "headerimage" >
+<div class="mainlogo"></div></div></header>
+
+  <nav>
+    <ul class="menu">
+    <li><a class="button" href="../index.html">Home</a></li>
+    <li><a class="button"  href="../about.html">About</a>  </li>
+    <li><a class="button" href="../issues.html">Issues</a></li>
+	<li><a class="button" href="../articles.html">Articles</a></li> 
+	<li><a class="button" href="https://tommycreep.bandcamp.com/" target="_blank">Shop</a></li>  
+	</ul>
+    </nav>
+	
+<main>
+
+	<article>
+<h2>Making Scales for Disting</h2>
+<p>29/06/2024</p>
+<br>
+<img src="../images/14c.gif">		
+<p>
+I’ve recently been experimenting with making my own scales to use with the quantiser algorithm on Disting. It is pretty quick and easy to do, though I did have to troubleshoot some parts out along the way, so thought I’d share my instructions in case it helps anyone else. 
+<br><br>
+There’s also a video version of the instructions available here:
+</p>
+		
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D47O4C7KoQU?si=yxXgq2NsVq-BCQ-p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<p><strong>Contents</strong></p>
+<a href="#secone">1. What scale to make?</a><br>
+<a href="#sectwo">2. Working out the intervals and midi note mapping</a><br>
+<a href="#secthree">3. Creating .scl and .kbm files</a><br>
+<a href="#secfour">4. Updating the playlist</a><br>
+<a href="#secfive">5. Testing them out</a><br>
+
+<p><strong>Handy Resources</strong></p>	
+<a target="_blank" rel="noopener noreferrer" href="https://inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies ">Reference chart for midi notes and frequencies</a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://www.omnicalculator.com/other/semitone">Frequency to Cents Interval Calculator&nbsp;</a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://sevish.com/scaleworkshop/?version=2.4.1">Scale Workshop .scl and .kbm Free Online Tool</a><br>		
+<br>
+<h3 ID="secone">1. What scale to make?</h3>
+<p>The first thing to figure out is what scale you’re going to make. If you need some inspiration, <a href=" https://www.youtube.com/watch?v=uEMKuTLQfX4&amp;ab_channel=LeviMcClain" target="_blank">check out Levi McClain's video about scales made from octaves divided into 31 notes</a>. One thing to consider is whether you want to create a tuning, an alternative to the normal 12-tones of an octave, or whether you want to make a scale, which would be a smaller group of notes- this depends on how you're going to play it in the end, whether you're going to use a keyboard or sequencer to dial in notes or something less precise. <a href="https://en.xen.wiki/w/Category:Lists_of_scales" target="_blank">You can find loads of scales here</a> if you're not making your own system from scratch. </p>
+
+<p>Inspired by the Pythagorean idea of <a href="https://en.wikipedia.org/wiki/Musica_universalis" target="_blank">the music of the spheres</a>, I wanted to make some scales based on relationships between planets and figured exoplanetary systems could be some fun material to mess around with. I looked up some measurements on wikipedia pages for systems containing between 5 and 8 planets, I then doubled the numbers til they fell within an audible frequency range. </p>
+<br>		
+
+<h3 id="sectwo">2. Working out the intervals</h3>
+
+<p>The next step was to decide what midi notes I wanted the notes to map to. <a target="_blank" rel="noopener noreferrer" href="https://inspiredacoustics.com/en/MIDI_note_numbers_and_center_frequencies ">This is a handy reference chart for midi notes and frequencies</a>. I started with the planet closest to its star in a particular system, mapping that to the closest C to its frequency and then spaced the other notes across the octave as I saw fit (I would later double up notes to fill the gaps as I'd rather have some keys playing the same note than some not sounding at all). This is what I ended up with:</p>
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-gagn{border-color:#ffffff;text-align:right;vertical-align:bottom}
+.tg .tg-n0of{border-color:#ffffff;font-weight:bold;text-align:left;vertical-align:bottom}
+.tg .tg-lh7k{border-color:#ffffff;text-align:left;vertical-align:bottom}
+</style>
+<table class="tg"><thead>
+  <tr>
+    <th class="tg-n0of">Planet</th>
+    <th class="tg-n0of">Distance</th>
+    <th class="tg-n0of">Midi</th>
+    <th class="tg-n0of">Frequency</th>
+    <th class="tg-n0of">Cents</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-lh7k">f</td>
+    <td class="tg-lh7k">0.0175</td>
+    <td class="tg-lh7k">C1</td>
+    <td class="tg-lh7k">35.84</td>
+    <td class="tg-gagn">0.</td>
+  </tr>
+  <tr>
+    <td class="tg-lh7k">g</td>
+    <td class="tg-lh7k">0.142</td>
+    <td class="tg-lh7k">D1</td>
+    <td class="tg-lh7k">36.352</td>
+    <td class="tg-lh7k">24.557</td>
+  </tr>
+  <tr>
+    <td class="tg-lh7k">d</td>
+    <td class="tg-lh7k">0.0372</td>
+    <td class="tg-lh7k">E1</td>
+    <td class="tg-lh7k">38.0928</td>
+    <td class="tg-lh7k">105.54</td>
+  </tr>
+  <tr>
+    <td class="tg-lh7k">c</td>
+    <td class="tg-lh7k">0.0792</td>
+    <td class="tg-lh7k">F1</td>
+    <td class="tg-lh7k">40.5504</td>
+    <td class="tg-lh7k">213.77</td>
+  </tr>
+  <tr>
+    <td class="tg-lh7k">e</td>
+    <td class="tg-lh7k">0.0491</td>
+    <td class="tg-lh7k">G1</td>
+    <td class="tg-lh7k">50.2784</td>
+    <td class="tg-gagn">586.</td>
+  </tr>
+  <tr>
+    <td class="tg-lh7k">b</td>
+    <td class="tg-lh7k">0.0658</td>
+    <td class="tg-lh7k">B1</td>
+    <td class="tg-lh7k">67.3792</td>
+    <td class="tg-lh7k">1092.9</td>
+  </tr>
+  <tr>
+    <td class="tg-lh7k"></td>
+    <td class="tg-lh7k"></td>
+    <td class="tg-lh7k">C2</td>
+    <td class="tg-lh7k">71.68</td>
+    <td class="tg-gagn">1200.</td>
+  </tr>
+</tbody></table>
+
+<p>Next was to work out the intervals between my notes. I found the easiest way to do this was using <a target="_blank" rel="noopener noreferrer" href="https://www.omnicalculator.com/other/semitone">a frequency to cent calculator</a> using the first note as the root, then using the calculator to work out the interval between that and each other note in my scale.</p>
+<br>
+<h3 ID="secthree">3. Creating .scl and .kbm files</h3>
+
+		<p>This part is actually relatively straightforward. The Scala <span style="color: lawngreen">.scl</span> file tells your quantiser what your intervals are, then the Keyboard Mapping <span style="color: lawngreen">.kbm</span> file defines the root note and how you want your notes to map to normal keyboard notes. Some quantisers will work with just the .scl file, in which case the root note will be whatever your oscillator is tuned to. Disting requires both files to be present to work and it’s actually really handy as you can have multiple tuning files with differently-tuned root notes.</p>
+
+		<p><a target="_blank" rel="noopener noreferrer" href="https://sevish.com/scaleworkshop/?version=2.4.1">Scale Workshop</a> is a free online tool for creating these files created by microtonal maestro Sevish (<a href="https://sevish.com/music-resources/" target="_blank">see Sevish's website for some free scala and kbm files</a>). First, enter your <span style="color: lawngreen">Base frequency</span> i.e. your root note, the first note of your scale and then enter the midi note that you want it to be.<span class="Apple-converted-space">&nbsp;</span></p>
+
+<img src="../images/14b.gif">		
+		
+		<p>Then paste in your intervals into the <span style="color: lawngreen">Scale Data</span> box. There are different possible formats for entering your intervals, for example you can enter them as ratios like 3/2 which might be easiest if you you’re entering in an existing microtonal scale that you’ve found online.</p>
+<p>If you’re entering them as cents, you need to include a decimal point, even if there are no numbers after the decimal. Because you’re entering intervals, the first number should be the interval between your root and the second note of your scale, then, if you’ve designed it to repeat at a normal octave, the last interval would be 1200. cents. Check the table display on the right-hand side to make sure that the notes are mapped as you had planned it.</p>
+		
+<p>You can test your scale within Scale Workshop by playing it with your computer keyboard or even a midi keyboard if you've got one to hand.</p>
+
+		<p>Then all you need to do is give your scale a name and then click <span style="color: lawngreen">Scala scale</span> and <span style="color: lawngreen">Scala keyboard mapping</span> to export your files. An awesome feature is that it automatically creates a URL for your scale so you can share it- you can find the URL in the .scl file itself if you open it up in a text editor. <a target="_blank" rel="noopener noreferrer" href="https://sevish.com/scaleworkshop/?n=Kepler_80_Type_A&amp;l=1F1_o.fh_o.fh_2x.1i_2x.1i_5x.25_5x.25_ga._ga._uc.9_uc.9_xc.&amp;f=z.u8n1fu8n2&amp;m=o&amp;version=2.4.1">Here's the scale I created for this example</a>.</p>
+<br>
+<h3 ID="secfour">4. Updating the playlist</h3>
+
+		<p>If you’re using Disting, an important final step is to update the scale playlist file on the SD card. On a new line, you just add <span style="color: lawngreen">the name of the .scl file</span> and on the line directly under it, enter <span style="color: lawngreen">-kbm=</span> and <span style="color: lawngreen">the name of the .kbm file</span>. </p>		
+		
+<img src="../images/14a.gif">
+		
+		<p><span style="color: red">NOTE:</span> If you’re copying and pasting the names from elsewhere, be careful to not copy any hidden characters or you may encounter issues. I copied a bunch of filenames directly from the files on the mac in one go and something hidden was preventing Disting from understanding them as separate files, until I tried again but first pasted into <a href="https://convertcase.net/plain-text-converter/" target="_blank">an online make plain text site</a> before pasting onto the playlist file.</p>
+<br>
+<h3 ID="secfive">5. Testing them out</h3>
+
+		<p>I used algorithm <span style="color: lawngreen">K5</span> on Disting Ex in Dual Mode (I usually use the other half as a sample player) and it works brilliantly, especially with the automatic trigger out on Disting that triggers whenever it detects a note change. <br><br>For $20 you can get <a target="_blank" rel="noopener noreferrer" href="https://library.vcvrack.com/VCV-Scalar/Scalar">the Scalar VCV rack module</a> if you have a hybrid set up or want a quick way of testing of your scales. It doesn't accept .kbm files though so you need to tune your oscillator to the roote note manually by right-clicking the oscillator and pasting in the frequency.</p>
+
+		
+
+<p>And that’s it. See below for a couple of videos of a scale I made based on <a href="https://en.wikipedia.org/wiki/55_Cancri" target="_blank">the 55 Cancri exoplanet system</a>. Hopefully this is helpful for someone out there, if so, let me know! Feel free to <a href="mailto:tommycreep@gmail.com">get in touch</a> if you have any questions or get stuck on any of it.</p>
+
+	
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/C2XnipTNEM2/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/C2XnipTNEM2/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/C2XnipTNEM2/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Tommy Creep (@tommycreep)</a></p></div></blockquote> <script async src="//www.instagram.com/embed.js"></script>		
+	</article>
+	<br>
+		<hr>	
+<p><a href="../articles.html">Return to Article List</a></p>
+	
+	
+	</main>
+	
+	
+	</body>
